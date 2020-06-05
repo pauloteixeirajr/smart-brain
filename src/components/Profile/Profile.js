@@ -1,7 +1,7 @@
 import React from 'react';
 import './Profile.css';
 
-const Profile = ({ toggleModal }) => {
+const Profile = ({ toggleModal, user }) => {
   return (
     <div className="profile-modal">
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center bg-white">
@@ -11,9 +11,9 @@ const Profile = ({ toggleModal }) => {
             className="h3 w3 dib"
             alt="avatar"
           />
-          <h1>John Doe</h1>
-          <h4>Images submitted: 5</h4>
-          <p>Member since: January</p>
+          <h1>{user.name}</h1>
+          <h4>Images submitted: {user.entries}</h4>
+          <p>Member since: {new Date(user.joined).toLocaleDateString()}</p>
           <hr />
 
           <label className="mt2 fw6" htmlFor="user-name">
@@ -21,7 +21,7 @@ const Profile = ({ toggleModal }) => {
           </label>
           <input
             className="pa2 ba w-100"
-            placeholder="John"
+            defaultValue={user.name}
             type="text"
             name="user-name"
             id="name"
@@ -32,7 +32,7 @@ const Profile = ({ toggleModal }) => {
           </label>
           <input
             className="pa2 ba w-100"
-            placeholder="56"
+            defaultValue={user.age}
             type="text"
             name="user-age"
             id="age"
@@ -43,7 +43,7 @@ const Profile = ({ toggleModal }) => {
           </label>
           <input
             className="pa2 ba w-100"
-            placeholder="Dragon"
+            defaultValue={user.pet}
             type="text"
             name="user-pet"
             id="pet"
